@@ -8,3 +8,4 @@ apt-get install git
 git clone https://github.com/richardghirst/PiBits.git
 cd PiBits/ServoBlaster/user
 sudo make install
+# if compilation fails, go take a look at https://github.com/richardghirst/PiBits/issues/84
