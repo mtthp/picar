@@ -24,6 +24,7 @@ def decrease():
 	print("decreased to " + str(current_value))
 
 def __main__():
+	__setValue__(__min_value__)
 	while(1):
 		line = input("Enter a value: ")
 		if line:
@@ -31,6 +32,5 @@ def __main__():
 		else:
 			break
 
-__setValue__(__min_value__)
 if __name__ == "__main__":
 	__main__()
