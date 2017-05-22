@@ -54,14 +54,14 @@ def __main__():
 
         if (math.fabs(values[1]) > math.fabs(values[0])) :
             if (values[1] > 0) :
-                motors.Backwards()
+                motors.Backwards(math.fabs(values[1]))
             else :
-                motors.Forwards()
+                motors.Forwards(math.fabs(values[1]))
         elif (values[0] != 0) :
             if (values[0] > 0) :
-                motors.Right()
+                motors.Right(math.fabs(values[0]))
             elif (values[0] < 0) :
-                motors.Left()
+                motors.Left(math.fabs(values[0]))
         else:
             motors.StopMotors()
 
