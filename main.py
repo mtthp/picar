@@ -1,6 +1,7 @@
 import pygame
+import math
 from src import motors
-from src import servos
+#from src import servos
 from time import sleep
 
 print('Starting initializing joystick...')
@@ -37,34 +38,31 @@ def get():
         it+=1
     return out
 
-def test():
+def __main__():
     while True:
         values = get()
-        # print(values)
+        #print(values)
+        #continue
 
-        if (values[0] > 0) :
+        if (values[2] > 0) :
             print("Camera Right")
             servos.increase()
-        elif (values[0] < 0) :
+        elif (values[2] < 0) :
             print("Camera Left")
             servos.decrease()
 
 
-        if (values[2] > 0) :
-            print("Forward")
-            motors.Forwards()
-        elif (values[2] < 0) :
-            print("Backward")
-            motors.Backwards()
-
-        if (values[0] > 0) :
-            print("Right")
-            motors.Right()
-        elif (values[0] < 0) :
-            print("Left")
-            motors.Left()
-
-        if (values[0] == 0 and values[2] == 0):
+        if (math.fabs(values[1]) > math.fabs(values[0])) :
+            if (values[1] > 0) :
+                motors.Backwards()
+            else :
+                motors.Forwards()
+        elif (values[0] != 0) :
+            if (values[0] > 0) :
+                motors.Right()
+            elif (values[0] < 0) :
+                motors.Left()
+        else:
             motors.StopMotors()
 
         # if (values[0] < 0 or values[5] < 0) :
@@ -80,7 +78,7 @@ def test():
         sleep(0.2)
 
 
-def test2():
+def __main2__():
     while True:
         values = get()
         # print(values)
@@ -133,4 +131,6 @@ def test2():
 
         sleep(0.2)
 
-test2()
+
+if __name__ == "__main__":
+     __main__()
